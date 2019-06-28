@@ -13,29 +13,41 @@ export default function sketch(p) {
   function feixeX(x) {
     p.line(x, 0, x, 800)
   }
+
   function feixeY(y) {
     p.line(0, y, 800, y)
   }
+
   function feixesY(y1, y2, num) {
-    const espaço = y2 - y1;
-    const espaçoEntre = Math.round(espaço / num);
-    feixeY(y1)
-    while (y1 < y2) {
-      y1 = y1 + espaçoEntre;
+    if (num > 0) {
+      const espaço = y2 - y1;
+      const espaçoEntre = Math.round(espaço / num);
       feixeY(y1)
+      while (y1 < y2) {
+        y1 = y1 + espaçoEntre;
+        feixeY(y1)
+      }
+      //feixeX(x2)
     }
-    //feixeX(x2)
+
+
   }
+
   function feixesX(x1, x2, num) {
-    const espaço = x2 - x1;
-    const espaçoEntre = Math.round(espaço / num);
-    feixeX(x1)
-    while (x1 < x2) {
-      x1 = x1 + espaçoEntre;
+    console.log(num);
+    if (num > 0) {
+      const espaço = x2 - x1;
+      const espaçoEntre = Math.round(espaço / num);
       feixeX(x1)
+      while (x1 < x2) {
+        x1 = x1 + espaçoEntre;
+        feixeX(x1)
+      }
+      feixeX(x2)
     }
-    feixeX(x2)
   }
+
+
   p.setup = () => {
     canvas = p.createCanvas(800, 800);
   }
