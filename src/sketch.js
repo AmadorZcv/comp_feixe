@@ -2,12 +2,11 @@ export default function sketch(p) {
   let canvas;
   let x1 = 0;
   let x2 = 800;
-  let numX = 10;
-  let x = false
+  let num = 10;
+  let isVisible = false;
   let y1 = 0;
   let y2 = 800;
-  let numY = 10;
-  let y = false
+
 
 
   function feixeX(x) {
@@ -54,11 +53,19 @@ export default function sketch(p) {
 
   p.draw = () => {
     p.background('white');
-    if (x) {
-      feixesX(x1, x2, numX)
+    p.stroke("red")
+    p.strokeWeight(4);
+    p.point(x1,y1);
+    p.point(x2,y2);
+    p.strokeWeight(1);
+    p.stroke("black")
+
+    if (isVisible && x1 === x2) {
+
+      feixesY(y1, y2, num);
     }
-    if (y) {
-      feixesY(y1, y2, numY)
+    if (isVisible && y1===y2) {
+      feixesX(x1, x2, num)
     }
   }
 
@@ -66,13 +73,11 @@ export default function sketch(p) {
     if (canvas) {//Make sure the canvas has been created
       x1 = props.x1
       x2 = props.x2
-      numX = props.numX
-      x = props.x
-
+      num = props.num
+      isVisible = props.isVisible
       y1 = props.y1
       y2 = props.y2
-      numY = props.numY
-      y = props.y
+      
     }
   }
 }
